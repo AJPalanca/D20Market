@@ -1,0 +1,138 @@
+@page
+@model D20Market.Pages_Characters.CreateModel
+
+@{
+    ViewData["Title"] = "Create Character";
+}
+
+<h1>Create New Character</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Character.Name" class="control-label"></label>
+                <input asp-for="Character.Name" class="form-control" />
+                <span asp-validation-for="Character.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Character.Race" class="control-label"></label>
+                <select asp-for="Character.Race" class="form-control">
+                    <option value="">-- Select Race --</option>
+                    <option>Human</option>
+                    <option>Elf</option>
+                    <option>Dwarf</option>
+                    <option>Halfling</option>
+                    <option>Orc</option>
+                    <option>Tiefling</option>
+                    <option>Dragonborn</option>
+                    <option>Gnome</option>
+                    <option>Half-Elf</option>
+                    <option>Half-Orc</option>
+                </select>
+                <span asp-validation-for="Character.Race" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Character.Class" class="control-label"></label>
+                <select asp-for="Character.Class" class="form-control">
+                    <option value="">-- Select Class --</option>
+                    <option>Barbarian</option>
+                    <option>Bard</option>
+                    <option>Cleric</option>
+                    <option>Druid</option>
+                    <option>Fighter</option>
+                    <option>Monk</option>
+                    <option>Paladin</option>
+                    <option>Ranger</option>
+                    <option>Rogue</option>
+                    <option>Sorcerer</option>
+                    <option>Warlock</option>
+                    <option>Wizard</option>
+                </select>
+                <span asp-validation-for="Character.Class" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Character.Level" class="control-label"></label>
+                <input asp-for="Character.Level" class="form-control" type="number" min="1" max="20" />
+                <span asp-validation-for="Character.Level" class="text-danger"></span>
+            </div>
+
+            @* Ability Scores *@
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Character.Strength"></label>
+                    <input asp-for="Character.Strength" class="form-control" type="number" min="1" max="20" />
+                    <span asp-validation-for="Character.Strength" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Character.Dexterity"></label>
+                    <input asp-for="Character.Dexterity" class="form-control" type="number" min="1" max="20" />
+                    <span asp-validation-for="Character.Dexterity" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Character.Constitution"></label>
+                    <input asp-for="Character.Constitution" class="form-control" type="number" min="1" max="20" />
+                    <span asp-validation-for="Character.Constitution" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Character.Intelligence"></label>
+                    <input asp-for="Character.Intelligence" class="form-control" type="number" min="1" max="20" />
+                    <span asp-validation-for="Character.Intelligence" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Character.Wisdom"></label>
+                    <input asp-for="Character.Wisdom" class="form-control" type="number" min="1" max="20" />
+                    <span asp-validation-for="Character.Wisdom" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Character.Charisma"></label>
+                    <input asp-for="Character.Charisma" class="form-control" type="number" min="1" max="20" />
+                    <span asp-validation-for="Character.Charisma" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Character.Backstory"></label>
+                <textarea asp-for="Character.Backstory" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Character.Backstory" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Character.ImageUrl"></label>
+                <input asp-for="Character.ImageUrl" class="form-control" placeholder="Optional image URL" />
+                <span asp-validation-for="Character.ImageUrl" class="text-danger"></span>
+            </div>
+
+            <div class="form-check">
+                <input asp-for="Character.IsPublic" class="form-check-input" />
+                <label asp-for="Character.IsPublic" class="form-check-label"></label>
+            </div>
+
+            <div class="form-group mt-3">
+                <label asp-for="Character.PlayerId"></label>
+                <select asp-for="Character.PlayerId" class="form-control" asp-items="ViewBag.PlayerId"></select>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Create Character" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary ml-2">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

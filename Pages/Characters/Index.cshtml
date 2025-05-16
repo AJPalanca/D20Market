@@ -1,0 +1,63 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Characters";
+}
+
+<h1>Characters</h1>
+
+<form method="get" class="form-inline mb-3">
+    <div class="input-group">
+        <input type="text" name="searchString" value="@Model.CurrentFilter" class="form-control" placeholder="Search by Name or Class" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Race</th>
+            <th>
+                <a asp-route-sortOrder="@(Model.CurrentSort == "class_asc" ? "class_desc" : "class_asc")"
+                   asp-route-searchString="@Model.CurrentFilter"
+                   asp-route-pageIndex="1">
+                    Class
+                </a>
+            </th>
+            <th>Level</th>
+            <th>Player</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var character in Model.Characters)
+    {
+        <tr>
+            <td>@character.Name</td>
+            <td>@character.Race</td>
+            <td>@character.Class</td>
+            <td>@character.Level</td>
+            <td>@character.Player?.Name</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="mt-4">
+    <nav>
+        <ul class="pagination">
+            <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+                <a class="page-link"
+                   asp-route-pageIndex="@(Model.CurrentPage - 1)"
+                   asp-route-searchString="@Model.CurrentFilter"
+                   asp-route-sortOrder="@Model.CurrentSort">Previous</a>
+            </li>
+            <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                <a class="page-link"
+                   asp-route-pageIndex="@(Model.CurrentPage + 1)"
+                   asp-route-searchString="@Model.CurrentFilter"
+                   asp-route-sortOrder="@Model.CurrentSort">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>

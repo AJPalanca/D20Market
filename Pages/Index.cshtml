@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Welcome to D20 Market!";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4">🧙‍♂️ Welcome to D20 Market</h1>
+    <p class="lead">A marketplace for fantasy characters.Roll the dice and create, share, and explore!</p>
+
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg mr-2" asp-page="/Characters/Index">Search Characters</a>
+        <a class="btn btn-success btn-lg" asp-page="/Players/Create">Create Player</a>
+    </div>
+
+    <div class="mt-5">
+        <p>
+            D20 Market is your companion for Dungeons & Dragonsand other tabletop role-playing games.
+            Create and manage detailed character sheets, share them with friends, or keep them private.
+        <p>
+            Whether you're a player, DM, or just a fan of fantasy worlds, D20 Market is here to help organize your characters.
+        </p>
+    </div>
+</div>
