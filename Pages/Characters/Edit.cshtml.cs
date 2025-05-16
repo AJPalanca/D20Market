@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using D20Market.Data;
 using D20Market.Models;
 
 namespace D20Market.Pages_Characters
@@ -39,9 +34,6 @@ namespace D20Market.Pages_Characters
            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "Email");
             return Page();
         }
-
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
